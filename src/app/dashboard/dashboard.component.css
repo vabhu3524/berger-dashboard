@@ -1,0 +1,18 @@
+.main-content-new{
+    margin-top: 60px;
+    padding: 30px 15px;
+    min-height: calc(100vh - 123px);
+}
+
+.btn-submit{
+    height: 95%;
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 8px 14px 6px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    margin: 10px;
+}

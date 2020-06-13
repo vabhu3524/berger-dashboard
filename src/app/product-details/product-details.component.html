@@ -1,0 +1,71 @@
+<h3 style="font-weight: 600;">{{productName}}</h3>
+<div style="width:100%; height: 100%;   padding: 5px;">
+
+<div  class="divChart">
+<div class="col-lg-3 displayinlineblock">
+  <mat-form-field>
+  <mat-label>Select Country</mat-label>
+  <mat-select  [(ngModel)]="selectedCountry"  (selectionChange)="onCountryChange($event.value)">
+      <mat-option *ngFor="let data of countries" [value]="data" > {{data}}</mat-option>
+  </mat-select>
+  </mat-form-field>
+</div>
+
+<div class="col-lg-3 displayinlineblock">
+  <mat-form-field>
+  <mat-label>Select State</mat-label>
+  <mat-select  [(ngModel)]="selectedState"  (selectionChange)="onStateChange($event.value)">
+      <mat-option *ngFor="let data of states" [value]="data" > {{data}}</mat-option>
+  </mat-select>
+  </mat-form-field>
+</div>
+
+<div class="col-lg-3 displayinlineblock">
+  <mat-form-field>
+  <mat-label>Select City</mat-label>
+  <mat-select  [(ngModel)]="selectedCity"  (selectionChange)="onCityChange($event.value)">
+      <mat-option *ngFor="let data of cities" [value]="data" > {{data}}</mat-option>
+  </mat-select>
+  </mat-form-field>
+</div>
+
+<button mat-raised-button color="primary" (click)="getProductGridData()">Submit</button>
+<div class="noDataFound" *ngIf="dataSource.length<=0">
+<span>No Data Found</span>
+</div>
+<div class="example-container mat-elevation-z8" *ngIf="dataSource.length>0">
+  <table mat-table [dataSource]="dataSource">
+
+    <ng-container matColumnDef="position">
+      <th mat-header-cell *matHeaderCellDef> Sr No. </th>
+      <td mat-cell *matCellDef="let element; let i = index;"> {{i+1}} </td>
+    </ng-container>
+    <!-- Position Column -->
+    <ng-container matColumnDef="sDataPointValue">
+      <th mat-header-cell *matHeaderCellDef> Product Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.sDataPointValue }} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="nCount">
+      <th mat-header-cell *matHeaderCellDef> Usage Count      </th>
+      <td mat-cell *matCellDef="let element"> {{element.nCount}} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="sParam">
+      <th mat-header-cell *matHeaderCellDef> Location </th>
+      <td mat-cell *matCellDef="let element"> {{element.sParam}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
+</div>
+<div class="divChart postionChart">
+<div *ngIf="productData.length>0">
+  <nvd3 [options]="options" [data]="productData"></nvd3>
+</div>
+</div>
+</div>

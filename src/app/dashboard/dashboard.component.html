@@ -1,0 +1,242 @@
+<div class="main-content-new">
+  <div class="container-fluid">
+      <div class="row">
+          <!-- <div class="col-lg-3 col-md-6 col-sm-6">
+              <div class="card card-stats">
+                  <div class="card-header card-header-warning card-header-icon">
+                      <div class="card-icon">
+                          <i class="material-icons">content_copy</i>
+                      </div>
+                      <p class="card-category">Used Space</p>
+                      <h3 class="card-title">49/50
+                          <small>GB</small>
+                      </h3>
+                  </div>
+                  <div class="card-footer">
+                      <div class="stats">
+                          <i class="material-icons text-danger">warning</i>
+                          <a href="javascript:void(0)">Get More Space...</a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="col-lg-3 col-md-6 col-sm-6">
+              <div class="card card-stats">
+                  <div class="card-header card-header-success card-header-icon">
+                      <div class="card-icon">
+                          <i class="material-icons">store</i>
+                      </div>
+                      <p class="card-category">Revenue</p>
+                      <h3 class="card-title">$34,245</h3>
+                  </div>
+                  <div class="card-footer">
+                      <div class="stats">
+                          <i class="material-icons">date_range</i> Last 24 Hours
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="col-lg-3 col-md-6 col-sm-6">
+              <div class="card card-stats">
+                  <div class="card-header card-header-danger card-header-icon">
+                      <div class="card-icon">
+                          <i class="material-icons">info_outline</i>
+                      </div>
+                      <p class="card-category">Fixed Issues</p>
+                      <h3 class="card-title">75</h3>
+                  </div>
+                  <div class="card-footer">
+                      <div class="stats">
+                          <i class="material-icons">local_offer</i> Tracked from Github
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="col-lg-3 col-md-6 col-sm-6">
+              <div class="card card-stats">
+                  <div class="card-header card-header-info card-header-icon">
+                      <div class="card-icon">
+                          <i class="fa fa-twitter"></i>
+                      </div>
+                      <p class="card-category">Followers</p>
+                      <h3 class="card-title">+245</h3>
+                  </div>
+                  <div class="card-footer">
+                      <div class="stats">
+                          <i class="material-icons">update</i> Just Updated
+                      </div>
+                  </div>
+              </div>
+          </div> -->
+      </div>
+      <div class="row">
+          
+
+                <div class="col-lg-2">
+                    <mat-form-field>
+                    <mat-label>Select Datapoint</mat-label>
+                    <mat-select  [(ngModel)]="selectedDataPoint1" >
+                        <mat-option *ngFor="let data of dataPoints" [value]="data"> {{data}}</mat-option>
+                    </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-lg-2">
+                    <mat-form-field>
+                    <mat-label>Select Type</mat-label>
+                    <mat-select  [(ngModel)]="selectedType1"  (selectionChange)="onTypeChange(1,$event.value)">
+                        <mat-option value="country"> Country</mat-option>
+                        <mat-option value="state"> State</mat-option>
+                        <mat-option value="city"> City</mat-option>
+                    </mat-select>
+                    </mat-form-field>
+                </div>
+
+                <div class="col-lg-2">
+                    <mat-form-field>
+                    <mat-label>Select {{dynamicDD1.key}}</mat-label>
+                    <mat-select  [(ngModel)]="selectedDynamicType1"  (selectionChange)="onTypeChange(1,$event.value)">
+                        <mat-option *ngFor="let data of dynamicDD1.values" [value]="data" > {{data}}</mat-option>
+                    </mat-select>
+                    </mat-form-field>
+                </div>
+
+                <button type="button" class="btn-submit" (click)="getChartData(1)">Submit</button>
+            
+            <div class="row" *ngIf="arrUserData.length>0">
+                <!-- <nvd3 [options]="options" [data]="data1"></nvd3> -->
+                <nvd3 [options]="pieChart" [data]="arrUserData"></nvd3>
+            </div>
+     </div>
+
+
+
+
+
+
+     <div class="row">
+          
+
+        <div class="col-lg-2">
+            <mat-form-field>
+            <mat-label>Select Datapoint</mat-label>
+            <mat-select  [(ngModel)]="selectedDataPoint2" >
+                <mat-option *ngFor="let data of dataPoints" [value]="data"> {{data}}</mat-option>
+            </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-2">
+            <mat-form-field>
+            <mat-label>Select Type</mat-label>
+            <mat-select  [(ngModel)]="selectedType2"  (selectionChange)="onTypeChange(2,$event.value)">
+                <mat-option value="country"> Country</mat-option>
+                <mat-option value="state"> State</mat-option>
+                <mat-option value="city"> City</mat-option>
+            </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div class="col-lg-2">
+            <mat-form-field>
+            <mat-label>Select {{dynamicDD2.key}}</mat-label>
+            <mat-select  [(ngModel)]="selectedDynamicType2"  (selectionChange)="onTypeChange(2,$event.value)">
+                <mat-option *ngFor="let data of dynamicDD2.values" [value]="data" > {{data}}</mat-option>
+            </mat-select>
+            </mat-form-field>
+        </div>
+
+        <button type="button" class="btn-submit" (click)="getChartData(2)">Submit</button>
+    
+    <div class="row">
+        <nvd3 [options]="options" [data]="data2"></nvd3>
+        <nvd3 [options]="pieChart" [data]="pieChartData2"></nvd3>
+    </div>
+</div>
+
+
+
+
+<div class="row">
+          
+
+    <div class="col-lg-2">
+        <mat-form-field>
+        <mat-label>Select Datapoint</mat-label>
+        <mat-select  [(ngModel)]="selectedDataPoint3" >
+            <mat-option *ngFor="let data of dataPoints" [value]="data"> {{data}}</mat-option>
+        </mat-select>
+        </mat-form-field>
+    </div>
+    <div class="col-lg-2">
+        <mat-form-field>
+        <mat-label>Select Type</mat-label>
+        <mat-select  [(ngModel)]="selectedType3"  (selectionChange)="onTypeChange(3,$event.value)">
+            <mat-option value="country"> Country</mat-option>
+            <mat-option value="state"> State</mat-option>
+            <mat-option value="city"> City</mat-option>
+        </mat-select>
+        </mat-form-field>
+    </div>
+
+    <div class="col-lg-2">
+        <mat-form-field>
+        <mat-label>Select {{dynamicDD3.key}}</mat-label>
+        <mat-select  [(ngModel)]="selectedDynamicType3"  (selectionChange)="onTypeChange(3,$event.value)">
+            <mat-option *ngFor="let data of dynamicDD3.values" [value]="data" > {{data}}</mat-option>
+        </mat-select>
+        </mat-form-field>
+    </div>
+
+    <button type="button" class="btn-submit" (click)="getChartData(3)">Submit</button>
+
+<div class="row">
+    <nvd3 [options]="options" [data]="data3"></nvd3>
+    <nvd3 [options]="pieChart" [data]="pieChartData3"></nvd3>
+</div>
+</div>
+
+
+
+
+
+
+<div class="row">
+          
+
+    <div class="col-lg-2">
+        <mat-form-field>
+        <mat-label>Select Datapoint</mat-label>
+        <mat-select  [(ngModel)]="selectedDataPoint4" >
+            <mat-option *ngFor="let data of dataPoints" [value]="data"> {{data}}</mat-option>
+        </mat-select>
+        </mat-form-field>
+    </div>
+    <div class="col-lg-2">
+        <mat-form-field>
+        <mat-label>Select Type</mat-label>
+        <mat-select  [(ngModel)]="selectedType4"  (selectionChange)="onTypeChange(4,$event.value)">
+            <mat-option value="country"> Country</mat-option>
+            <mat-option value="state"> State</mat-option>
+            <mat-option value="city"> City</mat-option>
+        </mat-select>
+        </mat-form-field>
+    </div>
+
+    <div class="col-lg-2">
+        <mat-form-field>
+        <mat-label>Select {{dynamicDD4.key}}</mat-label>
+        <mat-select  [(ngModel)]="selectedDynamicType4"  (selectionChange)="onTypeChange(4,$event.value)">
+            <mat-option *ngFor="let data of dynamicDD4.values" [value]="data" > {{data}}</mat-option>
+        </mat-select>
+        </mat-form-field>
+    </div>
+
+    <button type="button" class="btn-submit" (click)="getChartData(4)">Submit</button>
+
+<div class="row">
+    <nvd3 [options]="options" [data]="data4"></nvd3>
+    <nvd3 [options]="pieChart" [data]="pieChartData4"></nvd3>
+</div>
+</div>
+
+
+</div>

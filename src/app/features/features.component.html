@@ -1,0 +1,35 @@
+
+<div class="divQ4 top left" *ngIf="arrFeatureSocial.length>0">
+<span class="headingCss">Social Sharing</span>
+<ul class="b">
+  <li *ngFor="let data of arrFeatureSocial">{{data.key}} : {{data.y}} %</li>
+</ul>
+<nvd3 [options]="pieChart" [data]="arrFeatureSocial"></nvd3>
+</div>
+
+<div class="divQ4 top right" *ngIf="arrFeatureCV.length>0">
+  <span class="headingCss">Cv app to cv app sharing</span>
+  <ul class="b">
+    <li *ngFor="let data of arrFeatureCV">{{data.key}} : {{data.y}} %</li>
+  </ul>
+  <nvd3 [options]="pieChart" [data]="arrFeatureCV"></nvd3>
+
+</div>
+
+<div class="divQ4 bottom left" *ngIf="arrFeatureStore.length>0">
+  <span class="headingCss">Usage of store locator</span>
+  <ul class="b">
+    <li *ngFor="let data of arrFeatureStore">{{data.key}} : {{data.y}} %</li>
+  </ul>
+  <nvd3 [options]="pieChart" [data]="arrFeatureStore"></nvd3>
+
+</div>
+
+<div class="divQ4 bottom right"  *ngIf="arrFeatureContact.length>0">
+  <span class="headingCss">Usage of contact us</span>
+  <ul class="b">
+    <li *ngFor="let data of arrFeatureContact">{{data.key}} : {{data.y}} %</li>
+  </ul>
+<nvd3 [options]="pieChart" [data]="arrFeatureContact"></nvd3>
+
+</div>

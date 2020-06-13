@@ -1,0 +1,28 @@
+.example-container {
+    height: 400px;
+    overflow: auto;
+  }
+  
+  table {
+    width: 100%;
+  }
+  .divChart{
+    display: inline-block;
+      width:49%;
+      padding: 15px 0px 0px 10px;
+    }
+  
+    .displayinlineblock{
+        display: inline-block;
+    }
+
+    .postionChart{
+        position: absolute;
+        top: 25%;
+    }
+
+    .noDataFound {
+        position: absolute;
+    top: 49%;
+    left: 20%;
+    }

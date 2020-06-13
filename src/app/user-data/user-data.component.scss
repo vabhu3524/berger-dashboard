@@ -1,0 +1,39 @@
+.example-container {
+    height: 400px;
+    overflow: auto;
+  }
+  
+  table {
+    width: 100%;
+  }
+  .divChart{
+  display: inline-block;
+    width:49%;
+    padding: 0px 0px 0px 0px;
+  }
+
+  .displayinlineblock{
+      display: inline-block;
+  }
+  .postionChart{
+    position: absolute;
+    top: 25%;
+}
+.noDataFound {
+    position: absolute;
+top: 49%;
+left: 20%;
+}
+
+.mat-table__wrapper .mat-table {
+  min-width: auto !important;
+  width: 100% !important;
+}
+
+.mat-header-row {
+  width: 100%;
+}
+
+.mat-row {
+  width: 100%;
+}
