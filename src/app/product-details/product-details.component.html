@@ -65,7 +65,11 @@
 </div>
 <div class="divChart postionChart">
 <div *ngIf="productData.length>0">
+  <span class="y-axis-label">Usage Count</span>
+  <div class="graph-position">
   <nvd3 [options]="options" [data]="productData"></nvd3>
+</div>
+  <span class="x-axis-label">{{productName}}</span>
 </div>
 </div>
 </div>

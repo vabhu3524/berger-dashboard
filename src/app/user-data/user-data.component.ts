@@ -16,7 +16,7 @@ export class UserDataComponent implements OnInit {
   arrDataPoints:any=[];
   arrUserData:any=[];
   displayedColumns:any;
-  dataSource:any;
+  dataSource:any=[];
   countries:any=["India"];
   states:any=[];
   cities:any=[];
@@ -47,9 +47,9 @@ export class UserDataComponent implements OnInit {
     };
     this.getDropDownData();
     this.getUserDataPoints();
-    this.selectedCountry=this.countries[0];
-    this.onCountryChange(this.selectedCountry);
-    this.getUserGridData();
+    //this.selectedCountry=this.countries[0];
+    //this.onCountryChange(this.selectedCountry);
+    //this.getUserGridData();
     this.displayedColumns = ['position','sName', 'sMobile', 'sCity','sState','sCountry'];
   }
     getDropDownData(){
@@ -68,7 +68,7 @@ export class UserDataComponent implements OnInit {
       this.dashboardService.getUserDataPoints().subscribe((res:any)=>{
         if(res!=null && res.success && res.data!=null)
         {
-          this.userCount=res.data.nUser;
+          //this.userCount=res.data.nUser;
           this.arrUserData.push({"key":"Guest User",y:res.data.nGuestPercent});
           this.arrUserData.push({"key":"Registered User",y:res.data.nRegisteredUserPercent});
         }
@@ -80,6 +80,7 @@ export class UserDataComponent implements OnInit {
         if(res!=null && res.success && res.data!=null &&  res.data.length>0)
         {
            this.dataSource=res.data;
+           this.userCount=res.data.length;
         }
       });
     }

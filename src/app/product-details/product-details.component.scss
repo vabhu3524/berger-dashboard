@@ -18,11 +18,26 @@
 
     .postionChart{
         position: absolute;
-        top: 25%;
+        // top: 25%;
     }
 
     .noDataFound {
         position: absolute;
     top: 49%;
     left: 20%;
+    }
+
+    .y-axis-label {
+      transform: rotate(-180deg);
+    writing-mode: tb;
+    top: 200px;
+    position: relative;
+    }
+    .x-axis-label{
+      left: 200px;
+      position: relative;
+    }
+    .graph-position{
+      position: relative;
+      left:25px;
     }

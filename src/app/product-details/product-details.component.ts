@@ -82,13 +82,14 @@ export class ProductDetailsComponent implements OnInit {
         },
         duration: 500,
         xAxis: {
-          axisLabel:this.productName,
+          axisLabel:"",
           rotateLabels: 20,
           fontSize:15
         },
         yAxis: {
-          axisLabel: 'Usage Count',
-          axisLabelDistance: -5
+          axisLabel: '',
+          axisLabelDistance: -5,
+          rotateYLabel: false
         }
       }
     };
