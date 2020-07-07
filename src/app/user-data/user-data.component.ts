@@ -90,6 +90,7 @@ export class UserDataComponent implements OnInit {
         if(res!=null && res.success && res.data!=null &&  res.data.length>0)
         {
          this.states=res.data;
+         this.selectedState="-";
         }
       });
     }
@@ -99,6 +100,7 @@ export class UserDataComponent implements OnInit {
         if(res!=null && res.success && res.data!=null &&  res.data.length>0)
         {
          this.cities=res.data;
+         this.selectedCity="-";
         }
       });
     }

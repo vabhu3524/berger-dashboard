@@ -69,7 +69,9 @@ left: 20%;
   -webkit-hyphens: auto;
   hyphens: auto;
 }
-
+.mat-column-sMobile  {
+  width: 30% !important;
+}
 // .mat-column-sMobile  {
 //   word-wrap: break-word !important;
 //   white-space: unset !important;
@@ -90,7 +92,7 @@ left: 20%;
   word-wrap: break-word !important;
   white-space: unset !important;
   flex: 0 0 22% !important;
-  width: 22% !important;
+  width: 25% !important;
   overflow-wrap: break-word;
   word-wrap: break-word;
 
