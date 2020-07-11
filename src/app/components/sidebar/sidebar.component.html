@@ -61,5 +61,32 @@
                 <p>{{menuItem.title}}</p>
             </a>
         </li>
+
+        <div><span class="menuHeader">Product Data</span></div>
+        <li routerLinkActive="active" *ngFor="let menuItem of menuProducts" class="{{menuItem.class}} nav-item">
+            <a class="nav-link" [routerLink]="[menuItem.path]">
+                <i class="material-icons">{{menuItem.icon}}</i>
+                <p>{{menuItem.title}}</p>
+            </a>
+        </li>
+
+        <div><span class="menuHeader">Feature Usage</span></div>
+        <li routerLinkActive="active" *ngFor="let menuItem of menuFeatures" class="{{menuItem.class}} nav-item">
+            <a class="nav-link" [routerLink]="[menuItem.path]">
+                <i class="material-icons">{{menuItem.icon}}</i>
+                <p>{{menuItem.title}}</p>
+            </a>
+        </li>
+        <div><span class="menuHeader">Interactions</span></div>
+        <li routerLinkActive="active" *ngFor="let menuItem of menuInteractions" class="{{menuItem.class}} nav-item">
+            <a class="nav-link" [routerLink]="[menuItem.path]">
+                <i class="material-icons">{{menuItem.icon}}</i>
+                <p>{{menuItem.title}}</p>
+            </a>
+        </li>
+
+
+
+
     </ul>
 </div>

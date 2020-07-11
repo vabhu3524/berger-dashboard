@@ -1,4 +1,4 @@
-<h3 style="font-weight: 600;">{{productName}}</h3>
+<h3 style="font-weight: 600;margin-left: 35px;">{{productName}}</h3>
 <div style="width:100%; height: 100%;   padding: 5px;">
 
 <div  class="divChart">
@@ -65,11 +65,11 @@
 </div>
 <div class="divChart postionChart">
 <div *ngIf="productData.length>0">
-  <span class="y-axis-label">Usage Count</span>
+  <span *ngIf="chartType=='BarChart'" class="y-axis-label">Usage Count</span>
   <div class="graph-position">
   <nvd3 [options]="options" [data]="productData"></nvd3>
 </div>
-  <span class="x-axis-label">{{productName}}</span>
+  <span *ngIf="chartType=='BarChart'" class="x-axis-label">{{productName}}</span>
 </div>
 </div>
 </div>

@@ -43,6 +43,7 @@ export class ProductDetailsComponent implements OnInit {
   selectedCity:any="-";
   productName:any="";
   options:any;
+  chartType:any="BarChart";
   constructor(private actRoute:ActivatedRoute,private dashboardService:DashboardService) { }
 
   ngOnInit() {
@@ -53,7 +54,16 @@ export class ProductDetailsComponent implements OnInit {
       this.productData = [];
        this.productId= params['id'];
        this.productName= params['name'];
-       this.setOptions();
+       if(this.productId=="roomType" || this.productId=="surfaceArea"){
+         this.chartType="PieChart";
+        this.setPieChart();
+       }else
+       {
+        this.chartType="BarChart";
+        this.setOptions();
+       }
+
+       
        this.getProductChartData();
        this.selectedState="-";
        this.selectedCity="-";
@@ -94,9 +104,43 @@ export class ProductDetailsComponent implements OnInit {
       }
     };
   }
+
+  setPieChart(){
+    this.options= {
+      chart: {
+        type: 'pieChart',
+        height: 500,
+        x: function(d){return d.key;},
+        y: function(d){return d.y;},
+        showLabels: true,
+        duration: 500,
+        labelThreshold: 0.01,
+        labelSunbeamLayout: true,
+        legend: {
+          margin: {
+            top: 5,
+            right: 35,
+            bottom: 5,
+            left: 0
+          }
+        }
+      }
+    };
+  }
+
   getProductChartData(){
     this.dashboardService.getProductDeatils(this.productId).subscribe((res:any)=>{
       if(res!=null && res.success && res.data!=null &&  res.data.length>0)
+      {
+
+        if(this.chartType=="PieChart"){
+
+        
+        for(var index=0;index<res.data.length;index++)
+        {
+        this.productData.push({"key":res.data[index][0],y:res.data[index][1]});
+        }
+      }else
       {
         this.productData = [
           {
@@ -109,6 +153,9 @@ export class ProductDetailsComponent implements OnInit {
             "label" : res.data[index][0] ,
             "value" : res.data[index][1]});
         }
+      }
+
+        
         
       }
     });

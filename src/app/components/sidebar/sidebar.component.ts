@@ -32,6 +32,10 @@ export const ROUTES: RouteInfo[] = [
 })
 export class SidebarComponent implements OnInit {
   menuItems: any[];
+  mainMenuItems:any=[];
+  menuProducts:any=[];
+  menuFeatures:any=[];
+  menuInteractions:any=[];
 
   constructor(private componentService:ComponentService) { }
 
@@ -58,85 +62,102 @@ export class SidebarComponent implements OnInit {
     //         });
     //     }
     // });
-    this.menuItems.push(
+
+    this.mainMenuItems=[];
+
+      this.menuProducts.push(
+        { path: '/product/'+ "wallColor"+"/"+"Wall Color", title: "Wall Color",  icon: 'library_books', class: '',value:"" }
+        );
+
+        this.menuProducts.push(
+          { path: '/product/'+ "wallExtColor"+"/"+"Wall Ext Color", title: "Wall Ext Color",  icon: 'library_books', class: '',value:"" }
+          );
+this.menuProducts.push(
+          { path: '/product/'+ "wallPaper"+"/"+"WallPaper", title: "WallPaper",  icon: 'library_books', class: '',value:"" }
+          );
+this.menuProducts.push(
+          { path: '/product/'+ "layeredWallpaper"+"/"+"Layered Wallpaper", title: "Layered Wallpaper",  icon: 'library_books', class: '',value:"" }
+          );
+this.menuProducts.push(
+          { path: '/product/'+ "wallTexture"+"/"+"Wall Texture", title: "Wall Texture",  icon: 'library_books', class: '',value:"" }
+          );
+this.menuProducts.push(
+          { path: '/product/'+ "coloredTextures"+"/"+"Colored Textures", title: "Colored Textures",  icon: 'library_books', class: '',value:"" }
+          );
+this.menuProducts.push(
+          { path: '/product/'+ "illusion"+"/"+"Illusion", title: "Illusion",  icon: 'library_books', class: '',value:"" }
+          );
+this.menuProducts.push(
+          { path: '/product/'+ "coloredIllusion"+"/"+"Colored Illusion", title: "Colored Illusion",  icon: 'library_books', class: '',value:"" }
+          );
+this.menuProducts.push(
+          { path: '/product/'+ "woodColor"+"/"+"Wood Color", title: "Wood Color",  icon: 'library_books', class: '',value:"" }
+          );
+
+this.menuProducts.push(
+          { path: '/product/'+ "woodClearCoat"+"/"+"Wood Clear Coat", title: "Wood Clear Coat",  icon: 'library_books', class: '',value:"" }
+          );
+this.menuProducts.push(
+          { path: '/product/'+ "woodStainer"+"/"+"Wood Stainer", title: "Wood Stainer",  icon: 'library_books', class: '',value:"" }
+          );   
+this.menuProducts.push(
+          { path: '/product/'+ "metalColor"+"/"+"Metal Color", title: "Metal Color",  icon: 'library_books', class: '',value:"" }
+          );
+this.menuProducts.push(
+          { path: '/product/'+ "glassColor"+"/"+"Glass Color", title: "Glass Color",  icon: 'library_books', class: '',value:"" }
+          );
+this.menuProducts.push(
+          { path: '/product/'+ "glassStencil"+"/"+"Glass Stencil", title: "Glass Stencil",  icon: 'library_books', class: '',value:"" }
+          );
+
+this.menuProducts.push(
+          { path: '/product/'+ "floorFinish"+"/"+"Floor Finish", title: "Floor Finish",  icon: 'library_books', class: '',value:"" }
+          );
+
+this.menuProducts.push(
+          { path: '/product/'+ "floorColor"+"/"+"Floor Color", title: "Floor Color",  icon: 'library_books', class: '',value:"" }
+          );
+
+this.menuProducts.push(
+          { path: '/product/'+ "stencil"+"/"+"Stencil", title: "Stencil",  icon: 'library_books', class: '',value:"" }
+          );
+
+
+
+
+
+
+
+          this.menuInteractions.push(
+            { path: '/product/'+ "roomType"+"/"+"Room Type", title: "Room Types",  icon: 'library_books', class: '',value:"" }
+            );
+
+            this.menuInteractions.push(
+              { path: '/product/'+ "surfaceArea"+"/"+"Surface Area", title: "Surfaces",  icon: 'library_books', class: '',value:"" }
+              );
+
+
+
+
+                 this.menuFeatures.push(
                     { path: '/product/'+ "socialShare"+"/"+"Social Share", title: "Social Share",  icon: 'library_books', class: '',value:"" }
                     );
     
-                    this.menuItems.push(
-                      { path: '/product/'+ "roomType"+"/"+"Room Type", title: "Room Type",  icon: 'library_books', class: '',value:"" }
+                  
+                    this.menuFeatures.push(
+                      { path: '/product/'+ "socialShareCvApp"+"/"+"Social Share Cv App", title: "Social Share Cv App",  icon: 'library_books', class: '',value:"" }
                       );
-    
-                      this.menuItems.push(
-                        { path: '/product/'+ "surfaceArea"+"/"+"Surface Area", title: "Surface Area",  icon: 'library_books', class: '',value:"" }
-                        );
-						 this.menuItems.push(
-                        { path: '/product/'+ "storeLocator"+"/"+"Store Locator", title: "Store Locator",  icon: 'library_books', class: '',value:"" }
-                        );
-    
-                        this.menuItems.push(
+
+                          
+							          this.menuFeatures.push(
                           { path: '/product/'+ "contactUs"+"/"+"Contact Us", title: "Contact Us",  icon: 'library_books', class: '',value:"" }
                           );
-    
-                          this.menuItems.push(
-                            { path: '/product/'+ "wallColor"+"/"+"Wall Color", title: "Wall Color",  icon: 'library_books', class: '',value:"" }
+                          this.menuFeatures.push(
+                            { path: '/product/'+ "storeLocator"+"/"+"Store Locator", title: "Store Locator",  icon: 'library_books', class: '',value:"" }
                             );
-    
-                            this.menuItems.push(
-                              { path: '/product/'+ "wallExtColor"+"/"+"Wall Ext Color", title: "Wall Ext Color",  icon: 'library_books', class: '',value:"" }
-                              );
-                this.menuItems.push(
-                              { path: '/product/'+ "wallPaper"+"/"+"WallPaper", title: "WallPaper",  icon: 'library_books', class: '',value:"" }
-                              );
-							    this.menuItems.push(
-                              { path: '/product/'+ "layeredWallpaper"+"/"+"Layered Wallpaper", title: "Layered Wallpaper",  icon: 'library_books', class: '',value:"" }
-                              );
-							    this.menuItems.push(
-                              { path: '/product/'+ "wallTexture"+"/"+"Wall Texture", title: "Wall Texture",  icon: 'library_books', class: '',value:"" }
-                              );
-							    this.menuItems.push(
-                              { path: '/product/'+ "coloredTextures"+"/"+"Colored Textures", title: "Colored Textures",  icon: 'library_books', class: '',value:"" }
-                              );
-							    this.menuItems.push(
-                              { path: '/product/'+ "illusion"+"/"+"Illusion", title: "Illusion",  icon: 'library_books', class: '',value:"" }
-                              );
-							    this.menuItems.push(
-                              { path: '/product/'+ "coloredIllusion"+"/"+"Colored Illusion", title: "Colored Illusion",  icon: 'library_books', class: '',value:"" }
-                              );
-							    this.menuItems.push(
-                              { path: '/product/'+ "woodColor"+"/"+"Wood Color", title: "Wood Color",  icon: 'library_books', class: '',value:"" }
-                              );
+        
+                    
 							  
-							     this.menuItems.push(
-                              { path: '/product/'+ "woodClearCoat"+"/"+"Wood Clear Coat", title: "Wood Clear Coat",  icon: 'library_books', class: '',value:"" }
-                              );
-							     this.menuItems.push(
-                              { path: '/product/'+ "woodStainer"+"/"+"Wood Stainer", title: "Wood Stainer",  icon: 'library_books', class: '',value:"" }
-                              );   this.menuItems.push(
-                              { path: '/product/'+ "metalColor"+"/"+"Metal Color", title: "Metal Color",  icon: 'library_books', class: '',value:"" }
-                              );
-							     this.menuItems.push(
-                              { path: '/product/'+ "glassColor"+"/"+"Glass Color", title: "Glass Color",  icon: 'library_books', class: '',value:"" }
-                              );
-							     this.menuItems.push(
-                              { path: '/product/'+ "glassStencil"+"/"+"Glass Stencil", title: "Glass Stencil",  icon: 'library_books', class: '',value:"" }
-                              );
-							  
-							      this.menuItems.push(
-                              { path: '/product/'+ "floorFinish"+"/"+"Floor Finish", title: "Floor Finish",  icon: 'library_books', class: '',value:"" }
-                              );
-							  
-							      this.menuItems.push(
-                              { path: '/product/'+ "floorColor"+"/"+"Floor Color", title: "Floor Color",  icon: 'library_books', class: '',value:"" }
-                              );
-							  
-							      this.menuItems.push(
-                              { path: '/product/'+ "stencil"+"/"+"Stencil", title: "Stencil",  icon: 'library_books', class: '',value:"" }
-                              );
-							  
-							      this.menuItems.push(
-                              { path: '/product/'+ "socialShareCvApp"+"/"+"Social Share Cv App", title: "Social Share Cv App",  icon: 'library_books', class: '',value:"" }
-                              );
-
     
 
   }
