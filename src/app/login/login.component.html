@@ -1,0 +1,35 @@
+
+  <div class="loginDiv" >
+
+  <mat-card class="box width-height">
+    <mat-card-header style="justify-content: center;">
+      <mat-card-title>Berger Login</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form  class="example-form" [formGroup]="loginForm"    style="margin: 20px" (ngSubmit)="login()">
+        <mat-form-field>
+          <mat-label>User Name</mat-label>
+          <input formControlName="username" matInput required>
+          <mat-error *ngIf="loginForm.get('username').hasError('required')">We need an user name to log you in</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Password</mat-label>
+          <input type="password" formControlName="password" matInput required>
+          <!-- <mat-hint>Click the eye to toggle visibility</mat-hint> -->
+          <mat-error *ngIf="loginForm.get('password').hasError('required')">We need a password to log you in</mat-error>
+          <mat-error *ngIf="loginForm.get('password').hasError('minlength')">Password must be at least 5 characters long</mat-error>
+    
+        </mat-form-field>
+        <div style="text-align: center;">
+          <mat-card-actions>
+            <button mat-raised-button type="submit" (click)="login()" color="primary">Login</button>
+          </mat-card-actions>
+      
+          <div style="color:red"><span>{{responseMsg}}</span></div>
+        </div>
+      </form>
+      <!-- <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner> -->
+    </mat-card-content>
+   
+  </mat-card>
+</div>

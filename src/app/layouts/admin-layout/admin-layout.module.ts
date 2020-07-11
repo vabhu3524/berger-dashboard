@@ -29,6 +29,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { UserDataComponent } from 'app/user-data/user-data.component';
 import { FeaturesComponent } from 'app/features/features.component';
 import { ProductDetailsComponent } from 'app/product-details/product-details.component';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -56,7 +57,7 @@ import { ProductDetailsComponent } from 'app/product-details/product-details.com
     UpgradeComponent,
     FeaturesComponent,
     ProductDetailsComponent,
-  ]
+  ],
 })
 
 export class AdminLayoutModule {}

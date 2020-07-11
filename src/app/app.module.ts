@@ -31,6 +31,8 @@ import 'nvd3';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { DashboardService } from './services/dashboard.service';
 import { FrontInterceptor } from './front.interceptor';
+import { LoginModule } from './login/login.module';
+import { AuthGuard } from 'app/authguard.service';
 
 @NgModule({
   imports: [
@@ -41,6 +43,7 @@ import { FrontInterceptor } from './front.interceptor';
     ComponentsModule,
     RouterModule,
     AppRoutingModule,
+    LoginModule,
     // AgmCoreModule.forRoot({
     //   apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
     // }),
@@ -57,7 +60,7 @@ import { FrontInterceptor } from './front.interceptor';
     provide: HTTP_INTERCEPTORS,
     useClass: FrontInterceptor,
     multi: true,
-  },DashboardService],
+  },DashboardService,AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
