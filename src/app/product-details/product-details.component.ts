@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DashboardService } from 'app/services/dashboard.service';
+import { MatPaginator, MatTableDataSource } from '@angular/material';
 
 export interface PeriodicElement {
   name: string;
@@ -34,7 +35,8 @@ export class ProductDetailsComponent implements OnInit {
   productId:any="";
   productData:any=[];
   displayedColumns:any;
-  dataSource:any;
+//  dataSource:any;
+  dataSource: MatTableDataSource<any>;
   countries:any=["India"];
   states:any=[];
   cities:any=[];
@@ -44,13 +46,21 @@ export class ProductDetailsComponent implements OnInit {
   productName:any="";
   options:any;
   chartType:any="BarChart";
+  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+  recordLength:any=0;
+  pagesTotal:any=0;
+  recordPageSize:any=20;
+  pageNo:any=0;
+  tableHeight:any=400;
+  recordNumber:any=0;
   constructor(private actRoute:ActivatedRoute,private dashboardService:DashboardService) { }
 
   ngOnInit() {
   
     this.sub = this.actRoute.params.subscribe(params => {
+      this.tableHeight=screen.height-368;
       this.displayedColumns = ['position','sDataPointValue', 'nCount', 'sParam'];
-      this.dataSource = [];
+     // this.dataSource = [];
       this.productData = [];
        this.productId= params['id'];
        this.productName= params['name'];
@@ -69,6 +79,13 @@ export class ProductDetailsComponent implements OnInit {
        this.selectedCity="-";
        this.selectedCountry=this.countries[0];
        this.onCountryChange(this.selectedCountry);
+       //this.recordLength=606;
+       //this.recordPageSize=20;
+       //this.pageNo=0;
+       this.dataSource=new MatTableDataSource();
+    //   this.dataSource.paginator = this.paginator;
+       this.recordLength=500;
+       this.recordPageSize=20;
        this.getProductGridData();
     });
   }
@@ -82,7 +99,7 @@ export class ProductDetailsComponent implements OnInit {
           top: 20,
           right: 20,
           bottom: 55,
-          left: 55
+          left: 20
         },
         x: function(d){return d.label;},
         y: function(d){return d.value;},
@@ -147,12 +164,24 @@ export class ProductDetailsComponent implements OnInit {
               key: "Product Details",
               values: []
           }];
+
+        if(this.productId=="socialShare" || this.productId=="socialShareCvApp" || this.productId=="contactUs" ||this.productId=="storeLocator" )
+       {
+      
+        for(var index=0;index<res.data.length;index++)
+        {
+          this.productData[0].values.push({
+            "label" : res.data[index][0] ,
+            "value" : res.data[index][2]});
+        }
+       }else{
         for(var index=0;index<res.data.length;index++)
         {
           this.productData[0].values.push({
             "label" : res.data[index][0] ,
             "value" : res.data[index][1]});
         }
+      }
       }
 
         
@@ -162,13 +191,28 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   getProductGridData(){
-    this.dataSource = [];
-    this.dashboardService.getProductGridData(this.productId,this.selectedCity,this.selectedState,this.selectedCountry).subscribe((res:any)=>{
-      if(res!=null && res.success && res.data!=null &&  res.data.length>0)
+    //this.dataSource = [];
+    this.dataSource.data=[];
+    this.dashboardService.getProductGridData(this.productId,this.selectedCity,this.selectedState,this.selectedCountry,this.pageNo,this.recordPageSize).subscribe((res:any)=>{
+      if(res!=null && res.success && res.data!=null)
       {
-        var arrData:any[]=res.data;
-        arrData.sort((row1,row2)=>{return row2.nCount - row1.nCount})
-         this.dataSource=res.data;
+        if(res.data.gridData.length>0)
+        {
+         this.recordLength=res.data.nTotalRecords;
+        this.recordPageSize=res.data.nPageSize;
+        this.pagesTotal=Math.round(this.recordLength/this.recordPageSize);
+        this.pageNo=res.data.nPageNo;
+        this.recordNumber=this.recordPageSize*this.pageNo;
+        var arrData:any[]=res.data.gridData;
+        arrData.sort((row1,row2)=>{return row2.nCount - row1.nCount});
+        this.dataSource.data=arrData;
+        //this.recordLength=500;
+       // this.dataSource.paginator = this.paginator;
+        // this.recordLength=res.data.nTotalRecords;
+        // this.recordPageSize=res.data.nPageSize;
+        // //this.pageNo=206;
+        // this.dataSource.paginator.pageIndex=this.pageNo;
+        }
       }
     });
   }
@@ -193,5 +237,19 @@ export class ProductDetailsComponent implements OnInit {
 
   onCityChange(data){
 
+  }
+  pageSelected(data){
+    this.pageNo=data.pageIndex;
+    this.getProductGridData();
+  }
+  previousClick(){
+    if((this.pageNo-1)>0){
+      this.pageNo--;
+      this.getProductGridData();
+    }
+  }
+  nextClick(){
+    this.pageNo++;
+    this.getProductGridData();
   }
 }

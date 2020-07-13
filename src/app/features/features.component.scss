@@ -2,6 +2,8 @@
     position: absolute;
     // border: 1px dashed red;
     box-sizing: border-box;
+    padding: 12px;
+    border:1px solid red;
   }
   .top    { height: 50%; top:    0; }
   .bottom { height: 50%; bottom: 0; }
@@ -10,11 +12,11 @@
 
   ul.b {
     list-style-type: square;
-    width: 30%;
+    width: 35%;
     /* display: inline-block; */
     position: absolute;
     top: 75%;
-    left: 70%;
+    left: 67%;
     font-weight: 500;
   }
   .headingCss{

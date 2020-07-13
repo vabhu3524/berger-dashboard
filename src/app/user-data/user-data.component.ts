@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DashboardService } from 'app/services/dashboard.service';
+import { MatTableDataSource } from '@angular/material';
 
 @Component({
   selector: 'app-user-data',
@@ -16,7 +17,7 @@ export class UserDataComponent implements OnInit {
   arrDataPoints:any=[];
   arrUserData:any=[];
   displayedColumns:any;
-  dataSource:any=[];
+  dataSource: MatTableDataSource<any>;
   countries:any=["India"];
   states:any=[];
   cities:any=[];
@@ -24,6 +25,12 @@ export class UserDataComponent implements OnInit {
   selectedState:any="-";
   selectedCity:any="-";
   userCount:any;
+  recordLength:any=0;
+  pagesTotal:any=0;
+  recordPageSize:any=20;
+  pageNo:any=0;
+  tableHeight:any=400;
+  recordNumber:any=0;
   ngOnInit() {
     this.pieChart= {
       chart: {
@@ -45,6 +52,8 @@ export class UserDataComponent implements OnInit {
         }
       }
     };
+    this.tableHeight=screen.height-368;
+    this.dataSource=new MatTableDataSource();
     this.getDropDownData();
     this.getUserDataPoints();
     //this.selectedCountry=this.countries[0];
@@ -75,12 +84,20 @@ export class UserDataComponent implements OnInit {
     });
     }
     getUserGridData(){
-      this.dataSource = [];
-      this.dashboardService.getUserGridData(this.selectedCity,this.selectedState,this.selectedCountry).subscribe((res:any)=>{
-        if(res!=null && res.success && res.data!=null &&  res.data.length>0)
+      this.dataSource.data=[];
+      this.dashboardService.getUserGridData(this.selectedCity,this.selectedState,this.selectedCountry,this.pageNo,this.recordPageSize).subscribe((res:any)=>{
+        if(res!=null && res.success && res.data!=null)
         {
-           this.dataSource=res.data;
-           this.userCount=res.data.length;
+          if(res.data.gridData.length>0)
+        {
+          this.recordLength=res.data.nTotalRecords;
+          this.recordPageSize=res.data.nPageSize;
+          this.pagesTotal=Math.round(this.recordLength/this.recordPageSize);
+          this.pageNo=res.data.nPageNo;
+          this.recordNumber=this.recordPageSize*this.pageNo;
+          this.dataSource.data=res.data.gridData;
+           this.userCount=res.data.gridData.length;
+        }
         }
       });
     }
@@ -107,5 +124,15 @@ export class UserDataComponent implements OnInit {
   
     onCityChange(data){
   
+    }
+    previousClick(){
+      if((this.pageNo-1)>0){
+        this.pageNo--;
+        this.getUserGridData();
+      }
+    }
+    nextClick(){
+      this.pageNo++;
+      this.getUserGridData();
     }
 }

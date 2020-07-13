@@ -31,16 +31,16 @@
 
 <button mat-raised-button color="primary" (click)="getUserGridData()">Submit</button>
 
-<div class="noDataFound" *ngIf="dataSource.length<=0">
-  <span>No Data Found</span>
-  </div>
-
-<div class="example-container mat-elevation-z8"  *ngIf="dataSource.length>0">
+<div class="noDataFound" *ngIf="dataSource.data.length<=0"><span>No Data Found</span>
+</div>
+  <div style="text-align: end;padding: 2px;"  *ngIf="dataSource.data.length>0"> Page No: {{pageNo+1}} - {{pagesTotal}} of {{recordLength}} <button mat-raised-button (click)="previousClick()"><<</button><button mat-raised-button (click)="nextClick()">>></button>
+  </div> 
+<div class="example-container mat-elevation-z8"  [style.height.px]="tableHeight"   *ngIf="dataSource.data.length>0">
   <table mat-table [dataSource]="dataSource">
 
     <ng-container matColumnDef="position">
       <th mat-header-cell *matHeaderCellDef> Sr No. </th>
-      <td mat-cell *matCellDef="let element; let i = index;"> {{i+1}} </td>
+      <td mat-cell *matCellDef="let element; let i = index;"> {{recordNumber+i+1}} </td>
     </ng-container>
     <!-- Position Column -->
     <ng-container matColumnDef="sName">

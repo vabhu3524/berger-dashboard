@@ -10,10 +10,19 @@ export class AuthGuard implements CanActivate {
   }
 
   canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-    if (this.loginService.isValidLogin) {
-        return true;
+    var jwt1=localStorage.getItem("jwt");
+    if(jwt1!=null)
+    {
+      var token:any=JSON.parse(jwt1);
+      if(token.login)
+      {
+        var date:Date= new Date(token.validTill);
+        if(date>=new Date()){
+          return true;
+        }
+      }
+      
     }
-
     // navigate to login page
     this._router.navigate(['/login']);
     // you can save redirect url so after authing we can move them back to the page they requested

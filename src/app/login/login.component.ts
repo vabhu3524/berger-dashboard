@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from './login.service';
+import { json } from 'd3';
 
 @Component({
   selector: 'app-login',
@@ -24,6 +25,10 @@ export class LoginComponent implements OnInit {
    
     if(this.loginForm.controls["username"].value=="admin" && this.loginForm.controls["password"].value=="admin@321"){
       this.responseMsg="";
+      var date=new Date();
+      date.setDate(date.getDate()+2);
+      var jwtToken={'login':true,'validTill':date};
+      localStorage.setItem("jwt",JSON.stringify(jwtToken));
       this.loginService.isValidLogin=true;
       this.router.navigate(['/user-data']);
     }else

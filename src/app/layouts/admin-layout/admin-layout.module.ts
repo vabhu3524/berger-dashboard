@@ -23,7 +23,8 @@ import {
   MatFormFieldModule,
   MatTooltipModule,
   MatSelectModule,
-  MatTableModule
+  MatTableModule,
+  MatPaginatorModule
 } from '@angular/material';
 import { HttpClientModule } from '@angular/common/http';
 import { UserDataComponent } from 'app/user-data/user-data.component';
@@ -43,7 +44,8 @@ import { ProductDetailsComponent } from 'app/product-details/product-details.com
     MatSelectModule,
     MatTooltipModule,
     NvD3Module,HttpClientModule,
-    MatTableModule
+    MatTableModule,
+    MatPaginatorModule
   ],
   declarations: [
     DashboardComponent,

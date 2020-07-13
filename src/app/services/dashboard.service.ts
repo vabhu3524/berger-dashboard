@@ -30,8 +30,8 @@ export class DashboardService {
   getUserDataPoints(){
     return  this.http.get(this.BASE_URL+"/view/userDataPoints");
   }
-  getUserGridData(city="-",state="-",country="-"){
-    return  this.http.get(this.BASE_URL+"/view/userData/"+city+"/"+state+"/"+country);
+  getUserGridData(city="-",state="-",country="-",pageNo,pageSize){
+    return  this.http.get(this.BASE_URL+"/view/userData/"+city+"/"+state+"/"+country+"?page="+pageNo+"&size"+pageSize);
   }
 
 
@@ -43,8 +43,9 @@ export class DashboardService {
     return  this.http.get(this.BASE_URL+"/view/products/usage/"+data);
   }
 
-  getProductGridData(key,city='-',state='-',country='-'){
-    return  this.http.get(this.BASE_URL+"/view/analytics/"+key+"/"+city+"/"+state+"/"+country);
+  getProductGridData(key,city='-',state='-',country='-',pageNo,pageSize){
+    
+    return  this.http.get(this.BASE_URL+"/view/analytics/"+key+"/"+city+"/"+state+"/"+country+"?page="+pageNo+"&size"+pageSize);
   }
 
   getStates(data){
