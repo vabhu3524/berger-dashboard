@@ -19,6 +19,7 @@
   .postionChart{
     position: absolute;
     top: 25%;
+    z-index:-1;
 }
 .noDataFound {
     position: absolute;

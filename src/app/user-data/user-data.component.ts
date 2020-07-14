@@ -96,7 +96,7 @@ export class UserDataComponent implements OnInit {
           this.pageNo=res.data.nPageNo;
           this.recordNumber=this.recordPageSize*this.pageNo;
           this.dataSource.data=res.data.gridData;
-           this.userCount=res.data.gridData.length;
+           this.userCount=res.data.nTotalRecords;
         }
         }
       });
