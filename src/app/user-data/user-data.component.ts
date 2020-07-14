@@ -92,7 +92,7 @@ export class UserDataComponent implements OnInit {
         {
           this.recordLength=res.data.nTotalRecords;
           this.recordPageSize=res.data.nPageSize;
-          this.pagesTotal=Math.round(this.recordLength/this.recordPageSize);
+          this.pagesTotal=Math.ceil(this.recordLength/this.recordPageSize);
           this.pageNo=res.data.nPageNo;
           this.recordNumber=this.recordPageSize*this.pageNo;
           this.dataSource.data=res.data.gridData;
@@ -126,13 +126,16 @@ export class UserDataComponent implements OnInit {
   
     }
     previousClick(){
-      if((this.pageNo-1)>0){
+      if((this.pageNo-1)>=0){
         this.pageNo--;
         this.getUserGridData();
       }
     }
     nextClick(){
+      if(this.pagesTotal>(this.pageNo+1))
+      {
       this.pageNo++;
       this.getUserGridData();
+      }
     }
 }

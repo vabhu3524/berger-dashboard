@@ -81,7 +81,7 @@ export class ProductDetailsComponent implements OnInit {
        this.onCountryChange(this.selectedCountry);
        //this.recordLength=606;
        //this.recordPageSize=20;
-       //this.pageNo=0;
+       this.pageNo=0;
        this.dataSource=new MatTableDataSource();
     //   this.dataSource.paginator = this.paginator;
        this.recordLength=500;
@@ -200,7 +200,7 @@ export class ProductDetailsComponent implements OnInit {
         {
          this.recordLength=res.data.nTotalRecords;
         this.recordPageSize=res.data.nPageSize;
-        this.pagesTotal=Math.round(this.recordLength/this.recordPageSize);
+        this.pagesTotal=Math.ceil(this.recordLength/this.recordPageSize);
         this.pageNo=res.data.nPageNo;
         this.recordNumber=this.recordPageSize*this.pageNo;
         var arrData:any[]=res.data.gridData;
@@ -243,13 +243,16 @@ export class ProductDetailsComponent implements OnInit {
     this.getProductGridData();
   }
   previousClick(){
-    if((this.pageNo-1)>0){
+    if((this.pageNo-1)>=0){
       this.pageNo--;
       this.getProductGridData();
     }
   }
   nextClick(){
-    this.pageNo++;
-    this.getProductGridData();
+    if(this.pagesTotal>(this.pageNo+1))
+    {
+      this.pageNo++;
+      this.getProductGridData();
+    }
   }
 }
