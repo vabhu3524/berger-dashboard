@@ -52,7 +52,7 @@ export class UserDataComponent implements OnInit {
         }
       }
     };
-    this.tableHeight=screen.height-368;
+    this.tableHeight=screen.height-350;
     this.dataSource=new MatTableDataSource();
     this.getDropDownData();
     this.getUserDataPoints();
