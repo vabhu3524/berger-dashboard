@@ -130,12 +130,22 @@ export class UserDataComponent implements OnInit {
         this.pageNo--;
         this.getUserGridData();
       }
+      else
+      {
+        this.pageNo = this.pagesTotal-1;
+        this.getUserGridData();
+      }
     }
     nextClick(){
       if(this.pagesTotal>(this.pageNo+1))
       {
       this.pageNo++;
       this.getUserGridData();
+      }
+      else
+      {
+        this.pageNo = 0
+        this.getUserGridData();
       }
     }
 }

@@ -46,7 +46,9 @@
 .mat-column-sState  {
   word-wrap: break-word !important;
   white-space: unset !important;
-  flex: 0 0 28% !important;
+  //flex: 0 0 28% !important;
+  min-width: 15% !important;
+  width: 15% !important;
  // width: 28% !important;
   overflow-wrap: break-word;
   word-wrap: break-word;
@@ -61,7 +63,8 @@
 .mat-column-sCity  {
   word-wrap: break-word !important;
   white-space: unset !important;
-  flex: 0 0 25% !important;
+  min-width: 15% !important;
+  width: 15% !important;
  // width: 25% !important;
   overflow-wrap: break-word;
   word-wrap: break-word;
@@ -74,6 +77,10 @@
   hyphens: auto;
 }
 .mat-column-sMobile  {
+  
+  background-color: aqua;
+  min-width: 10% !important;
+  width: 10% !important;
  // width: 30% !important;
 }
 // .mat-column-sMobile  {
@@ -95,7 +102,7 @@
 .mat-column-sName  {
   word-wrap: break-word !important;
   white-space: unset !important;
-  flex: 0 0 22% !important;
+  flex: 0 0 20% !important;
  // width: 25% !important;
   overflow-wrap: break-word;
   word-wrap: break-word;
@@ -124,11 +131,11 @@
 //   hyphens: auto;
 // }
 
-// .mat-column-sCountry  {
+ .mat-column-sCountry  {
 //   word-wrap: break-word !important;
 //   white-space: unset !important;
-//   flex: 0 0 20% !important;
-//   width: 20% !important;
+      //flex: 0 0 10% !important;
+   width: 5% !important;
 //   overflow-wrap: break-word;
 //   word-wrap: break-word;
 
@@ -138,7 +145,7 @@
 //   -moz-hyphens: auto;
 //   -webkit-hyphens: auto;
 //   hyphens: auto;
-// }
+ }
 
 table.mat-table {
   display: table;
